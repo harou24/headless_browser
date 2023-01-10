@@ -19,6 +19,10 @@ func NewHeadlessBrowser() *HeadlessBrowser {
 	return &HeadlessBrowser{ctx, cancel}
 }
 
+func (b *HeadlessBrowser) DontForgetToCleanUp() {
+	defer b.cancel()
+}
+
 func (b *HeadlessBrowser) TakeFullScreenshot(url string, pathToSave string) {
 
 	var buf []byte
