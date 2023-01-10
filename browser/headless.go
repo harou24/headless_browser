@@ -20,7 +20,7 @@ func NewHeadlessBrowser() *HeadlessBrowser {
 }
 
 func (b *HeadlessBrowser) DontForgetToCleanUp() {
-	defer b.cancel()
+	b.cancel()
 }
 
 func (b *HeadlessBrowser) TakeFullScreenshot(url string, pathToSave string) {
@@ -34,7 +34,7 @@ func (b *HeadlessBrowser) TakeFullScreenshot(url string, pathToSave string) {
 	saveInFile(&buf, pathToSave)
 }
 
-func (b *HeadlessBrowser) TakeElementScreenshot(url string, pathToSave string) {
+func (b *HeadlessBrowser) TakeElementScreenshot(url string, cssSelector string, pathToSave string) {
 	var buf []byte
 
 	if err := chromedp.Run(b.ctx, elementScreenshot(url, `img.Homepage-logo`, &buf)); err != nil {
