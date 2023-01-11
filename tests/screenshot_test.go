@@ -24,3 +24,9 @@ func TestTakingElementScreenshot(t *testing.T) {
 	// This doesn't run well and produce errors
 	headlessBrowser.TakeElementScreenshot(`https://www.google.com/`, `img.lnXdpd`, `./test_element_screenshot.png`)
 }
+
+func TestTakingElementScreenshot2(t *testing.T) {
+	headlessBrowser := browser.NewHeadlessBrowser()
+	defer headlessBrowser.DontForgetToCleanUp()
+	headlessBrowser.TakeElementScreenshot("https://harou24.github.io/", `div.portfolio-btn`, `./test_element_screenshot.png`)
+}

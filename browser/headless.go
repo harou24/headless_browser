@@ -37,7 +37,7 @@ func (b *HeadlessBrowser) TakeFullScreenshot(url string, pathToSave string) {
 func (b *HeadlessBrowser) TakeElementScreenshot(url string, cssSelector string, pathToSave string) {
 	var buf []byte
 
-	if err := chromedp.Run(b.ctx, elementScreenshot(url, `img.Homepage-logo`, &buf)); err != nil {
+	if err := chromedp.Run(b.ctx, elementScreenshot(url, cssSelector, &buf)); err != nil {
 		log.Fatal(err)
 	}
 	saveInFile(&buf, pathToSave)
